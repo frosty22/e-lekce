@@ -1,0 +1,14 @@
+{block content}
+<h1>Články</h1>
+
+
+
+<ul class="nav nav-tabs">
+    <li><a n:href="default">Neschválené</a></li>
+    <li><a n:href="default, state => 1">Schválené</a></li>
+    <li><a n:href="default, state => 2">Zakázané</a></li>
+    <li class="active"><a n:href="add">Přidat nový</a></li>
+</ul>
+
+
+{control articleForm}

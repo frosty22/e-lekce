@@ -1,0 +1,28 @@
+{block content}
+<h1>Kategorie</h1>
+
+{control categoryForm}
+
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>ID</th>
+	    <th>Váha</th>
+	    <th>Název</th>
+	    <th>Možnosti</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $categories->order("weight") as $category}
+	<tr>
+	    <td>{$category->category_id}</td>
+	    <td>{$category->weight}</td>
+	    <td>{$category->name}</td>
+	    <td>
+		<a n:href="edit, id => $category->category_id" class="btn btn-small btn-primary">upravit</a>
+		<a n:href="delete!, id => $category->category_id" class="btn btn-small btn-danger">smazat</a>
+	    </td>
+	</tr>
+	{/foreach}
+    </tbody>
+</table>

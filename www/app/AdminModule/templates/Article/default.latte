@@ -1,0 +1,45 @@
+{block content}
+<h1>Články</h1>
+
+<ul class="nav nav-tabs">
+    <li{ifCurrent default, state => 0} class="active"{/ifCurrent}><a n:href="default">Neschválené</a></li>
+    <li{ifCurrent default, state => 1} class="active"{/ifCurrent}><a n:href="default, state => 1">Schválené</a></li>
+    <li{ifCurrent default, state => 2} class="active"{/ifCurrent}><a n:href="default, state => 2">Zakázané</a></li>
+    <li><a n:href="add">Přidat nový</a></li>
+</ul>
+
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>ID</th>
+	    <th>Jazyk</th>
+	    <th>Obrázek</th>
+	    <th>Titulek</th>
+	    <th>Feed</th>
+	    <th>Autor</th>	    
+	    <th>Možnosti</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $articles as $article}
+	<tr>
+	    <td>{$article->article_id}</td>
+	    <td>{$article->language_id}</td>
+	    <td><img src="/upload/{$article->image}" width="30" /></td>
+	    <td><a href="{$article->url}">{$article->title}</a></td>
+	    <td><a href="{$article->feed->url}">{$article->feed->name}</a></td>
+	    <td>{if $article->author}{$article->author->name}{else}žádný{/if}</td>
+	    <td>
+		<div class="btn-group">
+		<a n:href="edit, id => $article->article_id" class="btn btn-small btn-primary">upravit</a>
+		{if $article->state == 2}
+		<a n:href="allow!, id => $article->article_id" class="btn btn-small btn-success">povolit</a>
+		{else}
+		<a n:href="delete!, id => $article->article_id" class="btn btn-small btn-danger">zakázat</a>
+		{/if}
+		</div>
+	    </td>
+	</tr>
+	{/foreach}
+    </tbody>
+</table>

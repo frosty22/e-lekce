@@ -1,0 +1,27 @@
+{block content}
+<h1>Přidání RSS blogu</h1>
+
+{include @menu.latte}
+
+<p>V této části webu můžete přidat Váš RSS kanál, jehož články po schválení kanálu budou zobrazovány na těchto webových stránkách.</p>
+<p>Zároveň doporučujeme, aby Váš RSS export splňoval minimálně následující elementy ve vzorovém XML:</p>
+
+<pre  class="prettyprint">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rss version=&quot;2.0&quot; xmlns:atom=&quot;http://www.w3.org/2005/Atom&quot; xmlns:content=&quot;http://purl.org/rss/1.0/modules/content/&quot;&gt;
+&lt;channel&gt;
+    &lt;item&gt;
+	&lt;title&gt;Vzorový nadpis článku&lt;/title&gt;
+	&lt;link&gt;http://www.example.tld/vzorovy-nadpis-clanku/&lt;/link&gt;
+	&lt;description&gt;Perex vzorového článku, na stránkách se zobrazuje v délce maximálně 220 znaků.&lt;/description&gt;
+	&lt;pubDate&gt;Thu, 1 May 2012 17:00:00 +0200&lt;/pubDate&gt;
+	&lt;dc:creator&gt;Jan Novák&lt;/dc:creator&gt;
+    &lt;/item&gt;
+&lt;/channel&gt;
+</pre>
+
+<p>Popis elementů snad nebude nutný - většina RSS kanálů odpovídá těmto požadavkům, pouze bych chtěl upozornit na element <strong>dc:creator</strong>,
+který se tak hojně nevyužívá, avšak při jeho využití ušetříte práci redaktorům. Děkujeme.</p>
+
+
+{control feedForm}

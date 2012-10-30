@@ -1,0 +1,26 @@
+{block content}
+<h1>Autoři</h1>
+
+{control authorForm}
+
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>ID</th>
+	    <th>Název</th>
+	    <th>Možnosti</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $authors as $author}
+	<tr>
+	    <td>{$author->author_id}</td>
+	    <td>{$author->name}</td>
+	    <td>
+		<a n:href="edit, id => $author->author_id" class="btn btn-small btn-primary">upravit</a>
+		<a n:href="delete!, id => $author->author_id" class="btn btn-small btn-danger">smazat</a>
+	    </td>
+	</tr>
+	{/foreach}
+    </tbody>
+</table>

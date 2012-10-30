@@ -1,0 +1,91 @@
+#page {
+  margin-top: 60px;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.nav.nav-list .badge {
+  padding: 1px 7px;
+  margin-top: 1px;
+  position: absolute;
+  margin-left: 5px;
+}
+footer {
+  padding-bottom: 80px;
+  margin-top: 50px;
+}
+nav {
+  margin-top: 10px;
+}
+article {
+  margin-bottom: 15px;
+  border-bottom: 8px solid #f1f1f1;
+  padding-bottom: 15px;
+}
+article hr {
+  margin: 5px 0;
+  border-top: 1px solid #f0f0f0;
+}
+article.main {
+  font-size: 15px;
+}
+article.main .description {
+  font-size: 15px;
+  line-height: 22px;
+}
+article.main .badge,
+article.main .label {
+  font-size: 12px;
+}
+article h1,
+article h2 {
+  margin-bottom: 12px;
+}
+article h2 {
+  font-weight: normal;
+  font-size: 20px;
+}           
+article h1 a,
+article h2 a {
+  color: #000;
+}   
+.pagination i {
+  height: 0;
+}
+
+article#detail {
+  border: 0;
+}
+article#detail .info {
+  padding-bottom: 20px;
+}
+article#detail .perex {
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: bold;
+}
+article#detail .description {
+  font-size: 16px;
+  line-height: 24px;
+}
+#detail-choises {
+  margin-top: 8px;
+}
+h1 {
+  margin-bottom: 25px;
+}
+h3 {
+   font-size: 16px;   
+}
+form textarea {
+    width: 580px;
+}   
+h2 img {
+    position: relative;
+    margin-top: 8px;
+    float: right;
+}
+   

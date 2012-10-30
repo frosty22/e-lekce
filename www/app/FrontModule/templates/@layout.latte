@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags}Agregátor článků blogistů{/block} ~ E-Lekce.cz</title>
+       
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/bootstrap.min.css">
+        <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/font-awesome.css">
+        <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/own.css">
+        <!--[if IE 7]><link rel="stylesheet" href="{$basePath}/css/font-awesome-ie7.css"><![endif]-->
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+
+	<script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>   
+	<script src="{$basePath}/js/netteForms.js"></script>
+        
+	{block head}{/block}
+</head>
+<body>
+    
+<script> document.body.className+=' js' </script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29821704-1']);
+  _gaq.push(['_setDomainName', 'e-lekce.cz']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<header class="navbar navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+    <a class="brand" n:href=":Front:Homepage:">E-Lekce.cz ~ Agregátor článků blogistů</a>
+
+    <ul class="nav pull-right">
+      <li><a n:href=":Front:Homepage:"><i class="icon-home"></i> Hlavní strana</a></li>
+      <li><a n:href=":Front:Rss:add"><i class="icon-plus"></i> Přidat RSS</a></li>
+      {*<li><a n:href=":Front:Export:rss"><i class="icon-rss"></i> RSS</a></li>*}
+      <li><a n:href=":Front:Contact:"><i class="icon-envelope"></i> Kontakt</a></li>
+    </ul>
+
+  </div>
+ </div>
+</header>
+
+<section id="page" class="container">   
+ <div class="row">
+  <div class="span9">
+
+    <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
+
+    {include #content}    
+
+  </div>
+  <div id="column-right" class="span3">
+    
+    <h3>Informace o webu</h3>
+    <p></p>		
+    <div class="row">
+	      <div class="span3">
+            <p>Agregátor článků z mnoha blogů na téma programování.</p>
+            <p>Máte svůj blog? Chcete zveřejnit své články zde, přidejte odkaz na <a n:href=":Front:Rss:add">Vaši RSS čtečku</a>.</p>
+        </div>
+    </div>
+    <hr />	
+	
+    <h3>Kategorie článků</h3>
+    <nav>	
+      <ul class="nav nav-list">   
+	{foreach $categories as $category}  
+        <li><a n:href=":Front:Homepage:, category_id => $category['category_id']"><i class="icon-chevron-right"></i> {$category["name"]} <span class="badge badge-warning">{$category["articles"]}</span></a></li>
+	{/foreach}
+      </ul>
+      <hr />
+    </nav>
+	
+    <h3>Menu</h3>
+    <nav>	
+      <ul class="nav nav-list">   
+        <li><a n:href=":Front:Rss:add"><i class="icon-chevron-right"></i> Přidat RSS</a></li>
+	<li><a n:href=":Front:Rss:"><i class="icon-chevron-right"></i> Seznam RSS</a></li>
+	<li><a n:href=":Front:Contact:"><i class="icon-chevron-right"></i> Kontakt</a></li>
+      </ul>
+      <hr />
+    </nav>    
+    
+		
+    {*
+    <h3>Archiv článků</h3>
+    <nav>
+      <ul class="nav nav-list">   
+        <li>
+            <a href="#"><i class="icon-chevron-down"></i> <strong>Červenec 2012</strong></a>
+        	  <ul class="nav nav-list">
+        	    <li><a href="#"><i class="icon-caret-right"></i> Doctrine 2 a webov...</a></li>
+        	    <li><a href="#"><i class="icon-caret-right"></i> PHP webové aplikace</a></li>
+        	  </ul>
+        </li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Červen 2012</strong></a></li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Květen 2012</strong></a></li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Leden 2012</strong></a></li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Prosinec 2011</strong></a></li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Listopad 2011</strong></a></li>
+        <li><a href="#"><i class="icon-chevron-right"></i> <strong>Červen 2011</strong></a></li>
+      </ul>
+      <hr />
+    </nav>
+    *}
+    
+    <h3>Další projekty</h3>
+    <nav>	
+      <ul class="nav nav-list">   
+        <li><a href="http://www.aktivnislevy.cz"><i class="icon-chevron-right"></i> AktivniSlevy.cz</a></li>
+	<li><a href="http://www.adall.cz"><i class="icon-chevron-right"></i> AdAll.cz</a></li>
+        <li><a href="http://www.frosty22.cz"><i class="icon-chevron-right"></i> frosty22.cz</a></li>
+        <li><a href="http://www.nejporno.eu"><i class="icon-chevron-right"></i> NejPorno.eu</a></li>
+      </ul>
+    </nav>
+
+
+  </div>
+ </div>
+</section>
+
+
+<footer class="container">
+  <hr />
+  <div class="row">
+     <div class="span6 pull-right right">
+	 Copyright 2012 &copy; <a href="http://www.webcreating.cz">WebCreating.cz</a>
+	 | <a n:href=":Admin:Homepage:">Administrace</a>
+     </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

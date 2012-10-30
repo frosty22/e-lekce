@@ -1,0 +1,28 @@
+{block content}
+<h1>Výpis dostupných RSS</h1>
+
+{include @menu.latte}
+
+<p>Seznam dostupných RSS kanálů, které systém sleduje a z nichž jsou přidávány články. V případě Vašeho zájmu
+můžete přidat vlastní RSS kanál a po jeho schválení se zde začnou objevovat odkazy na Vaše články.</p>
+
+<table class="table table-striped">
+    <thead>
+	<tr>	    	    
+	    <th>Název webu</th>
+	    <th>URL</th>
+	    <th>Jazyk</th>
+	    <th>Stav</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $feeds as $feed}
+	<tr>
+	    <td><a href="{$feed->url}">{$feed->name}</a></td>
+	    <td><a href="{$feed->feed}">{$feed->feed}</a></td>
+	    <td><img src="/images/flag_{$feed->language_id}.png" /></td>
+	    <td>{if $feed->enable}aktivní{else}neaktivní{/if}</td>
+	</tr>
+	{/foreach}
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+{block content}
+<h1>Feedy</h1>
+
+{control feedForm}
+
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>ID</th>
+	    <th>Povoleno</th>
+	    <th>Jazyk</th>
+	    <th>Název webu</th>
+	    <th>Web URL</th>
+	    <th>Feed URL</th>
+	    <th>Výchozí autor</th>
+	    <th>Možnosti</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $feeds as $feed}
+	<tr>
+	    <td>{$feed->feed_id}</td>
+	    <td>{if $feed->enable}povolen{else}zakázán{/if}</td>
+	    <td>{$feed->language_id}</td>
+	    <td>{$feed->name}</td>
+	    <td><a href="{$feed->url}">link</a></td>
+	    <td><a href="{$feed->feed}">link</a></td>
+	    <td>{if $feed->author}{$feed->author->name}{/if}</td>
+	    <td>
+		<div class="btn-group">
+		<a n:href="edit, id => $feed->feed_id" class="btn btn-small btn-primary">upravit</a>
+		<a n:href="delete!, id => $feed->feed_id" class="btn btn-small btn-danger">smazat</a>
+		</div>
+	    </td>
+	</tr>
+	{/foreach}
+    </tbody>
+</table>
