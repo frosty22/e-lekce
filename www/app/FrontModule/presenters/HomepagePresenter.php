@@ -1,6 +1,7 @@
 <?php
 
 namespace FrontModule;
+use Nette\Application\BadRequestException;
 
 /**
  * Homepage presenter.
@@ -32,7 +33,10 @@ class HomepagePresenter extends BasePresenter
 	
 	$this->template->articles = $query->limit($paginator->itemsPerPage, $paginator->offset);
     }
-    
+
+
+
+
 
 
 }

@@ -54,7 +54,12 @@ if ($container->params['consoleMode']) {
 	    Route::FILTER_STRICT => true
 	)
     ));
-    
+
+	$front[] = new Route("export.rss", "Rss:export");
+
+	// Articles detail
+	$front[] = new Route("<article_id [0-9]+>-<seo>", "Detail:default");
+
     // Filter articles by author
     $front[] = new Route('autor-<seo>-<author_id [0-9]+>', 'Homepage:default');
     

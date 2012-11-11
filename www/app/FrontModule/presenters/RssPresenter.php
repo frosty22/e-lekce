@@ -65,6 +65,11 @@ class RssPresenter extends BasePresenter
 	$this->flashMessage("Feed byl uložen, děkujeme.", self::FM_SUCCESS);
 	$this->redirect("this");	
     }
-    
-    
+
+	/***/
+	public function actionExport()
+    {
+		$this->template->articles = $this->db->table("article")->where("state", 1)->order("added DESC")->limit(50);
+	}
+
 }

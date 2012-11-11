@@ -1,0 +1,24 @@
+{contentType text/xml}
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<atom:link href="{plink //this}" rel="self" type="application/rss+xml" />
+		<title>E-Lekce.cz - Agregátor článků</title>
+		<link>{plink //this}</link>
+		<description>Agregátor článků zabývající se programováním</description>
+		<copyright>Copyright (c) {= date("Y")}, WebCreating.cz</copyright>
+		<pubDate>{= date(DATE_RFC822)}</pubDate>
+		<webMaster>ledvinka.vit@gmail.com</webMaster>
+		{foreach $articles as $article}
+			<item>
+				<guid>{plink //Detail:default, article_id => $article->article_id, seo => \Nette\Utils\Strings::webalize($article->title)}</guid>
+				<title>{$article->title}</title>
+				<author>{if $article->author}{$article->author->name}{/if}</author>
+				<link>{plink //Detail:default, article_id => $article->article_id, seo => \Nette\Utils\Strings::webalize($article->title)}</link>
+				<description>{$article->perex|truncate:220}</description>
+				<pubDate>{$article->added|date:DATE_RFC822}</pubDate>
+				<source>{$article->feed->url}</source>
+			</item>
+		{/foreach}
+	</channel>
+</rss>
