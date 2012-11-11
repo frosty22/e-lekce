@@ -88,4 +88,20 @@ h2 img {
     margin-top: 8px;
     float: right;
 }
-   
+#frm-filterForm label {
+	display: inline;
+}
+#frm-filterForm img {
+	margin-right: 10px;
+}
+#frm-filterForm div {
+	padding-bottom: 25px;
+}
+#frm-filterForm div p {
+	float: left;
+	padding: 5px 0 10px 15px;
+}
+#frm-filterForm div div {
+	float: right;
+	width: 250px;
+}

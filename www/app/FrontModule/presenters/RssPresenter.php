@@ -10,7 +10,7 @@ class RssPresenter extends BasePresenter
     
     public function actionDefault()
     {
-	$this->template->feeds = $this->db->table("feed")->order("feed_id ASC");
+		$this->template->feeds = $this->db->table("feed")->order("feed_id ASC");
     }
     
     
@@ -69,7 +69,11 @@ class RssPresenter extends BasePresenter
 	/***/
 	public function actionExport()
     {
-		$this->template->articles = $this->db->table("article")->where("state", 1)->order("added DESC")->limit(50);
+		$query = $this->db->table("article")->where("state", 1)->order("added DESC")->limit(50);
+
+		if (!empty($this->langs)) $query->where("language_id", $this->langs);
+
+		$this->template->articles = $query;
 	}
 
 }

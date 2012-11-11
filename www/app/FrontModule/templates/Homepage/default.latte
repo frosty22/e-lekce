@@ -1,5 +1,17 @@
 {block content}
 
+	{form filterForm}
+	<div class="well">
+		<p>Vyberte jazykové mutace článků, které chcete zobrazovat:</p>
+		<div>
+		{foreach $form->getComponent("langs")->controls as $lang}
+			{$lang->control} <label for="{$lang->label->for}"><img src="/images/flag_{$lang->name}.png">
+		{/foreach}
+		{input send, class => "btn btn-mini btn-primary"}
+		</div>
+	</div>
+	{/form}
+
     {ifset $category}<h1>{$category->name}</h1>{/ifset}
     {ifset $author}<h1>Články autora {$author->name}</h1>{/ifset}
 
@@ -14,9 +26,9 @@
                   {if $article->author}<i class="icon-user"></i> Autor: &nbsp; <a n:href="Homepage:, author_id => $article->author->author_id, seo => \Nette\Utils\Strings::webalize($article->author->name)" class="badge badge-important">{$article->author->name}</a>{/if}
                </div>              
                <div class="span4 right">
-		  {foreach $article->related("article_category")->select("category.name, category.category_id") as $category} 
-		   <a n:href="Homepage:, category_id => $category['category_id']" class="label label-important">{$category["name"]}</a>
-		  {/foreach}
+			  {foreach $article->related("article_category")->select("category.name, category.category_id") as $category}
+			   <a n:href="Homepage:, category_id => $category['category_id']" class="label label-important">{$category["name"]}</a>
+			  {/foreach}
                </div>                  
       </div>
       <hr /> 

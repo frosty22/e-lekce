@@ -11,6 +11,11 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
     const FM_SUCCESS = "success";
     const FM_ERROR = "error";
 
+	/**
+	 * @persistent
+	 */
+	public $langs = array();
+
     /**
      * @var \Nette\Database\Connection
      */
@@ -24,14 +29,16 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
     }
     
     public function beforeRender() {
-	parent::beforeRender();
+		parent::beforeRender();
 	
-	$this->template->categories = $this->db->table("article")
+		$query = $this->db->table("article")
 					->select("article_category:category.category_id, article_category:category.name, COUNT(article.article_id) AS articles")
 					->where("article.state", 1)
 					->group("article_category:category.category_id")
-					->order("article_category:category.weight");	
-					
+					->order("article_category:category.weight");
+		if (!empty($this->langs)) $query->where("article.language_id", $this->langs);
+
+		$this->template->categories = $query;
     }
     
     protected function createComponentPaginator($name)
