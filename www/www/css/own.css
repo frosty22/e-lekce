@@ -90,9 +90,9 @@ h2 img {
 }
 #frm-filterForm label {
 	display: inline;
-}
-#frm-filterForm img {
-	margin-right: 10px;
+	font-size: 11px;
+	color: #333333;
+	margin-right: 5px;
 }
 #frm-filterForm div {
 	padding-bottom: 25px;
@@ -103,5 +103,5 @@ h2 img {
 }
 #frm-filterForm div div {
 	float: right;
-	width: 250px;
+	width: 260px;
 }

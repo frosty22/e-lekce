@@ -21,7 +21,7 @@ common:
 
 	services:
 		authenticator:
-			class: Nette\Security\SimpleAuthenticator(['xxx' = 'xxx'])
+			class: Nette\Security\SimpleAuthenticator(['admin' = 'tester'])
 
 
 	factories:
@@ -35,14 +35,15 @@ production < common:
 
 	nette:
 		database:
-			dsn: 'mysql:host=localhost;dbname=elekce'
-			user: 'xxx'
-			password: 'xxx'
+			dsn: 'mysql:host=webcreating.cz;dbname=elekce'
+			user: 'root'
+			password: 'AdminisT0286'
 
 development < common:
 
 	nette:
 		database:
-			dsn: 'mysql:host=localhost;dbname=elekce'
-			user: 'xxx'
-			password: 'xxx'
+			dsn: 'mysql:host=webcreating.cz;dbname=elekce'
+			user: 'root'
+			password: 'AdminisT0286'
+

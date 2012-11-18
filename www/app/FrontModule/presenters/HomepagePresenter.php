@@ -47,9 +47,14 @@ class HomepagePresenter extends BasePresenter
 		$form = new Form();
 
 		$langContainer = $form->addContainer("langs");
-		$langs = $this->db->table("language");
+		$langs = $this->db->table("language")
+						->select("language.language_id, COUNT(article:article_id) AS articles")
+						->where("article:state", 1)
+						->group("article:language_id");
 		foreach ($langs as $lang) {
-			$langContainer->addCheckbox($lang->language_id)->setDefaultValue(in_array($lang->language_id, $this->langs));
+			$langContainer->addCheckbox($lang->language_id)
+				->setDefaultValue(in_array($lang->language_id, $this->langs))
+				->getLabelPrototype()->dataCount = $lang->articles;
 		}
 
 	    $form->addSubmit("send", "Filtrovat");

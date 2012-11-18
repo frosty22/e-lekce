@@ -5,7 +5,7 @@
 		<p>Vyberte jazykové mutace článků, které chcete zobrazovat:</p>
 		<div>
 		{foreach $form->getComponent("langs")->controls as $lang}
-			{$lang->control} <label for="{$lang->label->for}"><img src="/images/flag_{$lang->name}.png">
+			{$lang->control} <label for="{$lang->label->for}"><img src="/images/flag_{$lang->name}.png"> ({$lang->label->dataCount})</label>
 		{/foreach}
 		{input send, class => "btn btn-mini btn-primary"}
 		</div>
