@@ -5,7 +5,7 @@
 		<p>Vyberte jazykové mutace článků, které chcete zobrazovat:</p>
 		<div>
 		{foreach $form->getComponent("langs")->controls as $lang}
-			{$lang->control} <label for="{$lang->label->for}"><img src="/images/flag_{$lang->name}.png">
+			{$lang->control} <label for="{$lang->label->for}"><img src="/images/flag_{$lang->name}.png"> ({$lang->label->dataCount})</label>
 		{/foreach}
 		{input send, class => "btn btn-mini btn-primary"}
 		</div>
@@ -41,7 +41,7 @@
             <hr />
             <div class="row">
                 <div class="span6">
-                  <i class="icon-external-link"></i> Web: &nbsp; <a href="{$article->feed->url}" class="badge badge-info">{$article->feed->name}</a>             
+                  {if $article->feed}<i class="icon-external-link"></i> Web: &nbsp; <a href="{$article->feed->url}" class="badge badge-info">{$article->feed->name}</a>{/if}
                 </div>
                 <div class="span2 right">
                   <a href="{$article->url}" class="btn btn-primary btn-mini">Přečíst celý článek <i class="icon-circle-arrow-right"></i></a>

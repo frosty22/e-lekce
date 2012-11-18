@@ -50,8 +50,7 @@ class ArticlePresenter extends BasePresenter {
 	
 	$items = $this->db->table("feed")->fetchPairs("feed_id", "name");
 	$form->addSelect("feed_id", "Feed:", $items)
-		->setPrompt("vybrat")
-		->setRequired("Je nutné vybrat feed.");	
+		->setPrompt("vybrat");
 	
 	$images = array();
 	foreach (\Nette\Utils\Finder::findFiles("*.png")->in(WWW_DIR . "/upload") as $file) {

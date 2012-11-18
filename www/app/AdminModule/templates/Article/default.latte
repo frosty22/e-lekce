@@ -27,7 +27,7 @@
 	    <td>{$article->language_id}</td>
 	    <td><img src="/upload/{$article->image}" width="30" /></td>
 	    <td><a href="{$article->url}">{$article->title}</a></td>
-	    <td><a href="{$article->feed->url}">{$article->feed->name}</a></td>
+	    <td>{if $article->feed}<a href="{$article->feed->url}">{$article->feed->name}</a>{else}žádný{/if}</td>
 	    <td>{if $article->author}{$article->author->name}{else}žádný{/if}</td>
 	    <td>
 		<div class="btn-group">
