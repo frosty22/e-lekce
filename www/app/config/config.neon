@@ -35,15 +35,15 @@ production < common:
 
 	nette:
 		database:
-			dsn: 'mysql:host=webcreating.cz;dbname=elekce'
-			user: 'root'
-			password: 'AdminisT0286'
+			dsn: 'mysql:host=xxx.cz;dbname=elekce'
+			user: 'xxx'
+			password: 'xxx'
 
 development < common:
 
 	nette:
 		database:
-			dsn: 'mysql:host=webcreating.cz;dbname=elekce'
-			user: 'root'
-			password: 'AdminisT0286'
+			dsn: 'mysql:host=xxx.cz;dbname=elekce'
+			user: 'xxx'
+			password: 'xxx'
 
