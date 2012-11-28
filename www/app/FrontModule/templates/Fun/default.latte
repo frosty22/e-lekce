@@ -1,0 +1,11 @@
+{block content}
+<h1>IT vtipy a zábava</h1>
+
+{foreach $jokes as $joke}
+<blockquote>
+	<p>{!$joke["text"]|nl2br}</p>
+	<small>{$joke["added"]|date:"d.n.Y H:i"}</small>
+</blockquote>
+{/foreach}
+
+{control paginator}

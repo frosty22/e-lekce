@@ -39,6 +39,7 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
 		if (!empty($this->langs)) $query->where("article.language_id", $this->langs);
 
 		$this->template->categories = $query;
+		$this->template->jokeCount = $this->db->table("joke")->count("*");
     }
     
     protected function createComponentPaginator($name)

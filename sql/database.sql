@@ -150,3 +150,12 @@ ALTER TABLE `feed`
 
 /* 21:10:37  E-lekce.cz */
 ALTER TABLE `article` CHANGE `feed_id` `feed_id` INT(10)  UNSIGNED  NULL;
+
+/* Joke support */
+CREATE TABLE `joke` (
+  `joke_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `text` text,
+  `added` datetime NOT NULL,
+  PRIMARY KEY (`joke_id`),
+  KEY `added` (`added`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;

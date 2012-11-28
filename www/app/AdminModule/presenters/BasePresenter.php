@@ -25,6 +25,10 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
 	if (!$this->user->isLoggedIn() && $this->name !== "Admin:Sign")
 	    $this->redirect("Sign:in");
     }
-    
+
+	protected function createComponentPaginator($name)
+	{
+		return new \VisualPaginator($this, $name);
+	}
     
 }

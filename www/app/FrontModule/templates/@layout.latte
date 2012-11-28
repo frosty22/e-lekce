@@ -82,6 +82,7 @@
 	{foreach $categories as $category}  
         <li><a n:href=":Front:Homepage:, category_id => $category['category_id']"><i class="icon-chevron-right"></i> {$category["name"]} <span class="badge badge-warning">{$category["articles"]}</span></a></li>
 	{/foreach}
+		<li><a n:href=":Front:Fun:"><i class="icon-thumbs-up"></i> IT vtipy <span class="badge badge-warning">{$jokeCount}</span></a></li>
       </ul>
       <hr />
     </nav>
