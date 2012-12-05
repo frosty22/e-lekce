@@ -41,6 +41,7 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
 
 		$this->template->categories = $query;
 		$this->template->jokeCount = $this->db->table("joke")->count("*");
+		$this->template->topicCount = $this->db->table("topic")->count("*");
     }
     
     protected function createComponentPaginator($name)

@@ -1,0 +1,21 @@
+{block content}
+<h1>Tématicky související články</h1>
+
+<blockquote>V této části webu naleznete seznam témat. Témata obsahují seskupení článků se stejným či podobným zaměřením -
+mohou to být například seriály článků či související články mezi různými blogy.</blockquote>
+
+{foreach $topics as $topic}
+<article class="topic">
+	<h2><a n:href="detail, topic_id => $topic->topic_id, seo => \Nette\Utils\Strings::webalize($topic->title)">{$topic->title}</a></h2>
+	<div class="row"><div class="span9">{$topic->perex}</div> </div>
+	<div class="row">
+		<div class="span4">
+			<i class="icon icon-tags"></i> Článků v tématu:
+			<a class="badge badge-warning" n:href="detail, topic_id => $topic->topic_id, seo => \Nette\Utils\Strings::webalize($topic->title)">{$topic->articles}</a>
+		</div>
+		<div class="span5 right">
+			<a class="btn btn-primary btn-small" n:href="detail, topic_id => $topic->topic_id, seo => \Nette\Utils\Strings::webalize($topic->title)">Zobrazit články tématu</a>
+		</div>
+	</div>
+</article>
+{/foreach}

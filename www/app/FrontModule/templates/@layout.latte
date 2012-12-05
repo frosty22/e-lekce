@@ -86,7 +86,8 @@
 	
     <h3>Kategorie článků</h3>
     <nav>	
-      <ul class="nav nav-list">   
+      <ul class="nav nav-list">
+		  <li><a n:href=":Front:Topic:"><i class="icon-book"></i> <strong>Témata & seriály</strong> <span class="badge badge-warning">{$topicCount}</span></a></li>
 	{foreach $categories as $category}  
         <li><a n:href=":Front:Homepage:, category_id => $category['category_id']"><i class="icon-chevron-right"></i> {$category["name"]} <span class="badge badge-warning">{$category["articles"]}</span></a></li>
 	{/foreach}

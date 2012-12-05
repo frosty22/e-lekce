@@ -158,4 +158,33 @@ CREATE TABLE `joke` (
   `added` datetime NOT NULL,
   PRIMARY KEY (`joke_id`),
   KEY `added` (`added`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
+/* Topic - series - support */
+CREATE TABLE `topic` (
+  `topic_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `perex` text NOT NULL,
+  PRIMARY KEY (`topic_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `topic_article` (
+  `topic_id` int(11) unsigned NOT NULL,
+  `article_id` int(11) unsigned NOT NULL,
+  `weight` tinyint(4) NOT NULL,
+  UNIQUE KEY `topic_id` (`topic_id`,`article_id`),
+  KEY `article_id` (`article_id`),
+  CONSTRAINT `topic_article_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`article_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `topic_article_ibfk_2` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `topic_category` (
+  `topic_id` int(11) unsigned NOT NULL,
+  `category_id` tinyint(3) unsigned NOT NULL,
+  UNIQUE KEY `topic_id` (`topic_id`,`category_id`),
+  KEY `category_id` (`category_id`),
+  CONSTRAINT `topic_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `topic_category_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

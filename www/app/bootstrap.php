@@ -55,6 +55,11 @@ if ($container->params['consoleMode']) {
 	)
     ));
 
+	$front[] = new Route("temata-serialy/<topic_id [0-9]+>-<seo>", "Topic:detail");
+	$front[] = new Route("temata-serialy/", "Topic:default");
+
+	$front[] = new Route("it-vtipy/", "Fun:default");
+
 	$front[] = new Route("export.rss", "Rss:export");
 
 	// Articles detail

@@ -17,7 +17,7 @@
 	{ifset $fulltext}<h1>Vyhledávání: {$fulltext}</h1>{/ifset}
 
     {foreach $articles as $article}
-    <article>
+    <article data-id="{$article->article_id}">
       <h2><a href="{$article->url}">{$article->title}</a><img src="/images/flag_{$article->language_id}.png" /> </h2>
       <div class="row">
                <div class="span2">

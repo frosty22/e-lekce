@@ -1,0 +1,46 @@
+{block content}
+<h1>{$topic->title}</h1>
+
+<blockquote>{$topic->perex}</blockquote>
+
+{foreach $topic->related("topic_article")->order("weight") as $topic_article}
+{var $article = $topic_article->article}
+<article>
+	<h2><a href="{$article->url}">{$article->title}</a><img src="/images/flag_{$article->language_id}.png" /> </h2>
+	<div class="row">
+		<div class="span2">
+			<time><i class="icon-time"></i> {$article->added|date:"d. n. Y"}</time>
+		</div>
+		<div class="span3">
+				{if $article->author}<i class="icon-user"></i> Autor: &nbsp; <a n:href="Homepage:, author_id => $article->author->author_id, seo => \Nette\Utils\Strings::webalize($article->author->name)" class="badge badge-important">{$article->author->name}</a>{/if}
+		</div>
+		<div class="span4 right">
+			{foreach $article->related("article_category")->select("category.name, category.category_id") as $category}
+				<a n:href="Homepage:, category_id => $category['category_id']" class="label label-important">{$category["name"]}</a>
+			{/foreach}
+		</div>
+	</div>
+	<hr />
+	<div class="row">
+		<div class="span1 center"><a href="{$article->url}"><img src="/upload/{$article->image}" /></a></div>
+		<div class="span8">
+			<div class="description">
+				{!$article->perex|truncate:220}
+			</div>
+			<hr />
+			<div class="row">
+				<div class="span6">
+						{if $article->feed}<i class="icon-external-link"></i> Web: &nbsp; <a href="{$article->feed->url}" class="badge badge-info">{$article->feed->name}</a>{/if}
+				</div>
+				<div class="span2 right">
+					<a href="{$article->url}" class="btn btn-primary btn-mini">Přečíst celý článek <i class="icon-circle-arrow-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+{/foreach}
+
+
+
+{control paginator}
