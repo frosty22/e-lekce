@@ -74,7 +74,15 @@
 			  nebo můžete <a n:href=":Front:Homepage:add">přidat samostatný článek</a>.</p>
         </div>
     </div>
-    <hr />	
+
+	<h3>Hledat</h3>
+	{form searchForm}
+	{control searchForm errors}
+		<div class="input-append">
+				{input fulltext, class => "span2", placeholder => "přesný výraz"}
+				{input search, class => "btn"}
+		</div>
+	{/form}
 	
     <h3>Kategorie článků</h3>
     <nav>	

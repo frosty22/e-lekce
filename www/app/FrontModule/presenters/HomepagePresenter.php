@@ -18,7 +18,7 @@ class HomepagePresenter extends BasePresenter
     const LIMIT = 20;
     
     
-    public function actionDefault($category_id, $author_id, $seo)
+    public function actionDefault($category_id, $author_id, $seo, $fulltext)
     {
 		$query = $this->db->table("article")->where("state", 1)->order("added DESC");
 
@@ -35,6 +35,12 @@ class HomepagePresenter extends BasePresenter
 
 		if (!empty($this->langs)) {
 			$query->where("article.language_id", $this->langs);
+		}
+
+		if (!empty($fulltext)) {
+			$query->where("article.title LIKE ? OR article.perex LIKE ?", array("%$fulltext%", "%$fulltext%"));
+			$this->template->fulltext = $fulltext;
+			$this["searchForm"]->setDefaults(array("fulltext" => $fulltext));
 		}
 
 		$paginator = $this["paginator"]->getPaginator();

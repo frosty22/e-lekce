@@ -1,6 +1,7 @@
 <?php
 
 namespace FrontModule;
+use Nette\Application\UI\Form;
 
 /**
  * Base presenter for all application presenters.
@@ -47,6 +48,23 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
 	return new \VisualPaginator($this, $name);
     }
     
-    
+    protected function createComponentSearchForm($name)
+	{
+		$form = $this->context->createForm();
+
+		$form->addText("fulltext", "Hledat")
+			->setRequired("Zadejte klíčová slova, která chcete hledat.");
+
+		$form->addSubmit("search", "Hledat");
+
+		$form->onSuccess[] = callback($this, "processSearchForm");
+
+		return $form;
+	}
+
+	public function processSearchForm(Form $form)
+	{
+		$this->redirect("Homepage:", array("fulltext" => $form["fulltext"]->value));
+	}
     
 }

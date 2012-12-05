@@ -113,3 +113,16 @@ h2 img {
 	width: 550px;
 	height: 50px;
 }
+
+.topic h2 {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+.topic .row {
+	margin-top: 0;
+	padding-top: 0;
+	padding-bottom: 20px;
+}
+#frm-searchForm .text {
+	width: 130px;
+}

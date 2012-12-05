@@ -14,6 +14,7 @@
 
     {ifset $category}<h1>{$category->name}</h1>{/ifset}
     {ifset $author}<h1>Články autora {$author->name}</h1>{/ifset}
+	{ifset $fulltext}<h1>Vyhledávání: {$fulltext}</h1>{/ifset}
 
     {foreach $articles as $article}
     <article>
@@ -40,9 +41,18 @@
             </div>
             <hr />
             <div class="row">
-                <div class="span6">
+                <div class="span3">
                   {if $article->feed}<i class="icon-external-link"></i> Web: &nbsp; <a href="{$article->feed->url}" class="badge badge-info">{$article->feed->name}</a>{/if}
                 </div>
+				<div class="span3 right">
+					{var $topics = $article->related("topic_article")->count()}
+					{if $topics > 1}
+						{* @todo: Implement support for multiple related topics *}
+					{elseif $topics == 1}
+						{var $topic_article = $article->related("topic_article")->select("topic_id, article_id")->fetch()}
+						<a n:href="Topic:detail, topic_id => $topic_article->topic->topic_id, seo => \Nette\Utils\Strings::webalize($topic_article->topic->title)" class="btn btn-warning btn-mini">Související články <i class="icon-circle-arrow-right"></i></a>
+					{/if}
+				</div>
                 <div class="span2 right">
                   <a href="{$article->url}" class="btn btn-primary btn-mini">Přečíst celý článek <i class="icon-circle-arrow-right"></i></a>
                 </div>
